@@ -16,3 +16,6 @@ const formSlice = createSlice({
     },
   },
 });
+
+export const { changeCost, changeName } = formSlice.actions;
+export const formReducer = formSlice.reducer;
