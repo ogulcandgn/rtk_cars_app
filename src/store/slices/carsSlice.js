@@ -28,3 +28,6 @@ const carsSlice = createSlice({
     state.cars = updated;
   },
 });
+
+export default carsSlice.reducer;
+export const { changeSearchTerm, addCar, removeCar } = carsSlice.actions;
