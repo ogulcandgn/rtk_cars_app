@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeName } from "../store/slices/formSlice";
 import { changeCost } from "../store/slices/formSlice";
+import { addCar } from "../store/slices/carsSlice";
+import { nanoid } from "@reduxjs/toolkit";
 
 const CarForm = () => {
   const dispatch = useDispatch();
@@ -11,7 +13,8 @@ const CarForm = () => {
   };
 
   const handleCostChange = (e) => {
-    dispatch(changeCost(e.target.value));
+    const carCost = parseInt(e.target.value || 0);
+    dispatch(changeCost(carCost));
   };
 
   const { name, cost } = useSelector((state) => {
@@ -21,10 +24,15 @@ const CarForm = () => {
     };
   });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addCar({ name: name, cost: cost }));
+  };
+
   return (
     <div className="car-form panel">
       <h4 className="subtitle is-3">Add Car</h4>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="field-group">
           <div className="field">
             <label className="label">Name</label>
@@ -39,11 +47,14 @@ const CarForm = () => {
             <label className="label">Cost</label>
             <input
               className="input is-expanded"
-              value={cost}
+              value={cost || ""}
               onChange={handleCostChange}
               type="number"
             />
           </div>
+        </div>
+        <div className="field">
+          <button className="button is-link">Submit</button>
         </div>
       </form>
     </div>
