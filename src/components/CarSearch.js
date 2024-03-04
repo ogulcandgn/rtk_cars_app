@@ -19,7 +19,7 @@ const CarSearch = () => {
       <div className="search field is-horizontal">
         <label className="label">Search</label>
         <input
-          className="input"
+          className="input m-3"
           value={searchTerm}
           onChange={handleSearchTermChange}
         />
