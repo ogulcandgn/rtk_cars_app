@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeName } from "../store/slices/formSlice";
 import { changeCost } from "../store/slices/formSlice";
 import { addCar } from "../store/slices/carsSlice";
-import { nanoid } from "@reduxjs/toolkit";
 
 const CarForm = () => {
   const dispatch = useDispatch();

@@ -12,20 +12,20 @@ const carsSlice = createSlice({
       state.searchTerm = action.payload;
     },
     addCar(state, action) {
-      //* baslangıcta bos olan cars array'imi dolduruyorum
+      //* baslangıcta bos olan carList array'imi dolduruyorum
       state.carList.push({
         name: action.payload.name,
         cost: action.payload.cost,
         id: nanoid(),
       });
     },
-  },
-  removeCar(state, action) {
-    //*remove işlemi
-    const updated = state.carList.filter((item) => {
-      return item.id !== action.payload;
-    });
-    state.carList = updated;
+    removeCar(state, action) {
+      //*remove işlemi
+      const updated = state.carList?.filter((item) => {
+        return item.id !== action.payload;
+      });
+      state.carList = updated;
+    },
   },
 });
 
